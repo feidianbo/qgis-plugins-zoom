@@ -37,18 +37,19 @@ class ZoomLevelDockWidget(QDockWidget):
         self.dockWidgetContents.setLayout(self.gridLayout)
 
         self.zoomLabel = QLabel(self.dockWidgetContents)
-        self.zoomLabel.setText('Zoom Level')
+        # self.zoomLabel.setText('Zoom Level')
+        self.zoomLabel.setText(self.tr('Zoom Level'))
 
         self.zoomValue = QDoubleSpinBox()
         self.zoomValue.setDecimals(2)
         self.zoomValue.setSingleStep(1)
 
         self.xyzLabel = QLabel(self.dockWidgetContents)
-        self.xyzLabel.setText('XYZ tile requests')
+        self.xyzLabel.setText(self.tr('XYZ tile requests'))
         self.xyzValue = QLabel(self.dockWidgetContents)
 
         self.vectorLabel = QLabel(self.dockWidgetContents)
-        self.vectorLabel.setText('Vector tile requests')
+        self.vectorLabel.setText(self.tr('Vector tile requests'))
         self.vectorValue = QLabel(self.dockWidgetContents)
 
         self.dockWidgetContents.layout().addWidget(self.zoomLabel, 0, 0)

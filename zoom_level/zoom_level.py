@@ -26,9 +26,28 @@ from .zoom_level_dockwidget import ZoomLevelDockWidget
 
 from math import log2, floor
 from . import resources
-
+import os
+from PyQt5.QtCore import QCoreApplication, QSettings, QTranslator, qVersion, QLocale
+from qgis.core import QgsMessageLog
+from qgis.utils import iface
 
 class ZoomLevel:
+    def tr(self, message):
+        """
+        This method is required to enable Qt internationalization.
+        It is called by LUpdate and runTime when a translation is loaded.
+        Get the translation for a string using Qt translation API.
+
+        We implement this ourselves since we do not inherit QObject.
+
+        :param message: String for translation.
+        :type message: str, QString
+
+        :returns: Translated version of message.
+        :rtype: QString
+        """
+        # noinspection PyTypeChecker,PyArgumentList,PyCallByClass
+        return QCoreApplication.translate('ZoomLevelDockWidget', message)
 
     def __init__(self, iface):
         # Save reference to the QGIS interface
@@ -36,6 +55,23 @@ class ZoomLevel:
         self.actions = []
         self.pluginIsActive = False
         self.dockwidget = None
+
+        # Load translations
+        locale = QSettings().value('locale/userLocale', QLocale.system().name())[0:2]
+        # 输出当前系统语言环境设置
+        iface.messageBar().pushMessage("语言设置", f"当前语言设置: {locale}", level=0, duration=5)
+                
+        plugin_dir = os.path.dirname(__file__)
+        locale_path = os.path.join(
+            plugin_dir,
+            'i18n',
+            'zoom_level_{}.qm'.format(locale)
+        )
+
+        if os.path.exists(locale_path):
+            self.translator = QTranslator()
+            self.translator.load(locale_path)
+            QCoreApplication.installTranslator(self.translator)
 
     def add_action(
             self,
@@ -103,7 +139,7 @@ class ZoomLevel:
 
         if add_to_menu:
             self.iface.addPluginToMenu(
-                "Zoom Level",
+                self.tr("Zoom Level"),
                 action)
 
         self.actions.append(action)
@@ -116,7 +152,7 @@ class ZoomLevel:
         icon_path = ':/plugins/zoom_level/icon.png'
         self.add_action(
             icon_path,
-            text = 'Zoom Level',
+            text = self.tr('Zoom Level'),
             callback = self.run,
             parent = self.iface.mainWindow()
         )
@@ -133,7 +169,7 @@ class ZoomLevel:
         """Remove widget"""
         for action in self.actions:
             self.iface.removePluginMenu(
-                "Zoom Level",
+                self.tr("Zoom Level"),
                 action)
             self.iface.removeToolBarIcon(action)
         QSettings().setValue('plugins/zoom_level/pluginIsActive', self.pluginIsActive)
