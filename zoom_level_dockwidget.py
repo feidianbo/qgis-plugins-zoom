@@ -30,7 +30,8 @@ class ZoomLevelDockWidget(QDockWidget):
 
         self.setWindowTitle(self.tr("Zoom Level plugin"))
         self.setObjectName('zoom-level-plugin-dock')
-        self.setGeometry(0, 0, 300, 100)
+        # 设置固定高度
+        self.setFixedHeight(120)
         self.dockWidgetContents = QWidget(self)
         self.setWidget(self.dockWidgetContents)
         self.gridLayout = QGridLayout()
