@@ -37,7 +37,6 @@ class ZoomLevelDockWidget(QDockWidget):
         self.dockWidgetContents.setLayout(self.gridLayout)
 
         self.zoomLabel = QLabel(self.dockWidgetContents)
-        # self.zoomLabel.setText('Zoom Level')
         self.zoomLabel.setText(self.tr('Zoom Level'))
 
         self.zoomValue = QDoubleSpinBox()
