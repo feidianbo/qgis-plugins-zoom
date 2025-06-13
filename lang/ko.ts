@@ -6,7 +6,7 @@
     <message>
         <location filename="../zoom_level.py" line="171"/>
         <source>Zoom Level</source>
-        <translation type="unfinished">缩放级别</translation>
+        <translation>확대/축소 레벨</translation>
     </message>
 </context>
 <context>
@@ -14,22 +14,22 @@
     <message>
         <location filename="../zoom_level_dockwidget.py" line="31"/>
         <source>Zoom Level plugin</source>
-        <translation>缩放插件</translation>
+        <translation>확대/축소 플러그인</translation>
     </message>
     <message>
         <location filename="../zoom_level_dockwidget.py" line="41"/>
         <source>Zoom Level</source>
-        <translation>缩放级别</translation>
+        <translation>확대/축소 레벨</translation>
     </message>
     <message>
         <location filename="../zoom_level_dockwidget.py" line="48"/>
         <source>XYZ tile requests</source>
-        <translation>XYZ瓦片请求</translation>
+        <translation>XYZ 타일 요청</translation>
     </message>
     <message>
         <location filename="../zoom_level_dockwidget.py" line="52"/>
         <source>Vector tile requests</source>
-        <translation>矢量瓦片请求</translation>
+        <translation>벡터 타일 요청</translation>
     </message>
 </context>
 </TS>
