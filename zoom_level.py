@@ -57,9 +57,9 @@ class ZoomLevel:
         self.dockwidget = None
 
         # Load translations
-        locale = QSettings().value('locale/userLocale', QLocale.system().name())[0:2]
+        locale = QSettings().value('locale/userLocale', QLocale.system().name())
         # 输出当前系统语言环境设置
-        iface.messageBar().pushMessage("语言设置", f"当前语言设置: { QSettings().value('locale/userLocale', QLocale.system().name()) }", level=0, duration=5)
+        iface.messageBar().pushMessage("语言设置", f"当前语言设置: { locale }", level=0, duration=5)
                 
         plugin_dir = os.path.dirname(__file__)
         locale_path = os.path.join(
