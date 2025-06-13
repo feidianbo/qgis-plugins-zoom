@@ -2,6 +2,14 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
+    <name>ZoomLevel</name>
+    <message>
+        <location filename="../zoom_level.py" line="171"/>
+        <source>Zoom Level</source>
+        <translation type="unfinished">缩放级别</translation>
+    </message>
+</context>
+<context>
     <name>ZoomLevelDockWidget</name>
     <message>
         <location filename="../zoom_level_dockwidget.py" line="31"/>

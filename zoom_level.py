@@ -65,7 +65,7 @@ class ZoomLevel:
         locale_path = os.path.join(
             plugin_dir,
             'i18n',
-            'zoom_level_{}.qm'.format(locale)
+            '{}.qm'.format(locale)
         )
 
         if os.path.exists(locale_path):
